@@ -1,22 +1,26 @@
-# $Id: Makefile.PL,v 1.3 2004/01/04 08:45:14 comdog Exp $
+# $Id: Makefile.PL,v 1.4 2004/09/17 18:09:44 comdog Exp $
 use ExtUtils::MakeMaker;
 
-sub ExtUtils::MM_Any::test_via_harness
+eval "use Test::Manifest";
+
+unless( $@ )
+	{
+	*ExtUtils::MM_Any::test_via_harness = sub
 		{
 		my($self, $perl, $tests) = @_;
-
+		
 		return qq|\t$perl "-MTest::Manifest" | .
 			qq|"-e" "run_t_manifest(\$(TEST_VERBOSE), '\$(INST_LIB)', | .
 			qq|'\$(INST_ARCHLIB)')"\n|;
 		}
-
+	}
+	
 WriteMakefile
         (
         'NAME'           => 'HTTP::Cookies::Mozilla',
         'VERSION_FROM'   => 'lib/Mozilla.pm',
  		'PREREQ_PM'      => {
  			'HTTP::Cookies'         => '1.25',
- 			'Test::Manifest'        => '0.9',
  			'Test::More'            => '0',
  			'Text::Diff'            => '0',
  			},

@@ -1,4 +1,4 @@
-# $Id: Mozilla.pm,v 1.4 2004/01/04 08:44:46 comdog Exp $
+# $Id: Mozilla.pm,v 1.6 2004/09/17 18:19:49 comdog Exp $
 package HTTP::Cookies::Mozilla;
 use strict;
 
@@ -8,11 +8,11 @@ HTTP::Cookies::Mozilla - Cookie storage and management for Mozilla
 
 =head1 SYNOPSIS
 
-use HTTP::Cookies::Mozilla;
+	use HTTP::Cookies::Mozilla;
 
-$cookie_jar = HTTP::Cookies::Mozilla->new;
+	$cookie_jar = HTTP::Cookies::Mozilla->new;
 
-# otherwise same as HTTP::Cookies
+	# otherwise same as HTTP::Cookies
 
 =head1 DESCRIPTION
 
@@ -29,7 +29,7 @@ See L<HTTP::Cookies>.
 This source is part of a SourceForge project which always has the
 latest sources in CVS, as well as all of the previous releases.
 
-	https://sourceforge.net/projects/brian-d-foy/
+	http://sourceforge.net/projects/brian-d-foy/
 
 If, for some reason, I disappear from the world, one of the other
 members of the project can shepherd this module appropriately.
@@ -39,7 +39,7 @@ members of the project can shepherd this module appropriately.
 derived from Gisle Aas's HTTP::Cookies::Netscape package with very
 few material changes.
 
-maintained by brian d foy, E<lt>bdfoy@cpan.orgE<gt>
+maintained by brian d foy, C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 
@@ -58,16 +58,16 @@ use Carp qw(carp);
 use constant TRUE  => 'TRUE';
 use constant FALSE => 'FALSE';
 
-$VERSION = sprintf "%2d.%02d", q$Revision: 1.4 $ =~ m/ (\d+) \. (\d+) /xg;
+$VERSION = sprintf "%2d.%02d", q$Revision: 1.6 $ =~ m/ (\d+) \. (\d+) /xg;
 
 my $EPOCH_OFFSET = $^O eq "MacOS" ? 21600 : 0;  # difference from Unix epoch
 
 sub load
 	{
     my( $self, $file ) = @_;
- 	
+
     $file ||= $self->{'file'} || return;
- 	
+
     local $_;
     local $/ = "\n";  # make sure we got standard record separator
 
@@ -77,35 +77,35 @@ sub load
     	carp "Could not open file [$file]: $!";
     	return;
     	}
-	
+
     my $magic = <$fh>;
 
-    unless( $magic =~ /^\# HTTP Cookie File/ ) 
+    unless( $magic =~ /^\# HTTP Cookie File/ )
     	{
 		carp "$file does not look like a Mozilla cookies file";
 		close $fh;
 		return;
-    	}	
- 
+    	}
+
     my $now = time() - $EPOCH_OFFSET;
- 
-    while( <$fh> ) 
+
+    while( <$fh> )
     	{
 		next if /^\s*\#/;
 		next if /^\s*$/;
 		tr/\n\r//d;
-		
-		my( $domain, $bool1, $path, $secure, $expires, $key, $val ) 
+
+		my( $domain, $bool1, $path, $secure, $expires, $key, $val )
 			= split /\t/;
-			
+
 		$secure = ( $secure eq TRUE );
 
 		$self->set_cookie( undef, $key, $val, $path, $domain, undef,
 			0, $secure, $expires - $now, 0 );
     	}
-    	
+
     close $fh;
-    
+
     1;
 	}
 
@@ -114,16 +114,16 @@ sub save
     my( $self, $file ) = @_;
 
     $file ||= $self->{'file'} || return;
- 
+
     local $_;
-    
+
     my $fh;
     unless( open $fh, "> $file" )
     	{
     	carp "Could not open file [$file]: $!";
     	return;
 		}
-		
+
     print $fh <<'EOT';
 # HTTP Cookie File
 # http://www.netscape.com/newsref/std/cookie_spec.html
@@ -133,7 +133,7 @@ sub save
 EOT
 
     my $now = time - $EPOCH_OFFSET;
-    
+
     $self->scan(
     	sub {
 			my( $version, $key, $val, $path, $domain, $port,
@@ -149,13 +149,13 @@ EOT
 
 			my $bool = $domain =~ /^\./ ? TRUE : FALSE;
 
-			print $fh join( "\t", $domain, $bool, $path, $secure, 
+			print $fh join( "\t", $domain, $bool, $path, $secure,
 				$expires, $key, $val ), "\n";
     		}
     	);
-    	
+
     close $fh;
-    
+
     1;
 	}
 
