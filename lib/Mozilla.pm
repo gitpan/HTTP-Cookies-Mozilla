@@ -1,4 +1,4 @@
-# $Id: Mozilla.pm,v 1.6 2004/09/17 18:19:49 comdog Exp $
+# $Id: Mozilla.pm,v 1.7 2005/03/12 05:51:13 comdog Exp $
 package HTTP::Cookies::Mozilla;
 use strict;
 
@@ -36,7 +36,7 @@ members of the project can shepherd this module appropriately.
 
 =head1 AUTHOR
 
-derived from Gisle Aas's HTTP::Cookies::Netscape package with very
+Derived from Gisle Aas's HTTP::Cookies::Netscape package with very
 few material changes.
 
 maintained by brian d foy, C<< <bdfoy@cpan.org> >>
@@ -58,7 +58,7 @@ use Carp qw(carp);
 use constant TRUE  => 'TRUE';
 use constant FALSE => 'FALSE';
 
-$VERSION = sprintf "%2d.%02d", q$Revision: 1.6 $ =~ m/ (\d+) \. (\d+) /xg;
+$VERSION = sprintf "%2d.%02d", q$Revision: 1.7 $ =~ m/ (\d+) \. (\d+) /xg;
 
 my $EPOCH_OFFSET = $^O eq "MacOS" ? 21600 : 0;  # difference from Unix epoch
 
