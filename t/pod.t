@@ -1,14 +1,6 @@
-# $Id: pod.t,v 1.1 2002/12/03 00:20:32 comdog Exp $
-BEGIN {
-	use File::Find::Rule;
-	@files = File::Find::Rule->file()->name( '*.pm' )->in( 'blib/lib' );
-	}
+# $Id: pod.t,v 1.2 2004/01/04 08:36:04 comdog Exp $
 
-use Test::More tests => scalar @files;
-use Test::Pod;
-
-foreach my $file ( @files )
-	{
-	pod_ok( $file );
-	}
-
+use Test::More;
+eval "use Test::Pod 1.00";
+plan skip_all => "Test::Pod 1.00 required for testing POD" if $@;
+all_pod_files_ok();

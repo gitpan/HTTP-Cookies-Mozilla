@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.2 2002/12/03 03:11:50 comdog Exp $
+# $Id: Makefile.PL,v 1.3 2004/01/04 08:45:14 comdog Exp $
 use ExtUtils::MakeMaker;
 
 sub ExtUtils::MM_Any::test_via_harness
@@ -15,12 +15,9 @@ WriteMakefile
         'NAME'           => 'HTTP::Cookies::Mozilla',
         'VERSION_FROM'   => 'lib/Mozilla.pm',
  		'PREREQ_PM'      => {
- 			'File::Find::Rule'      => '0',
  			'HTTP::Cookies'         => '1.25',
  			'Test::Manifest'        => '0.9',
  			'Test::More'            => '0',
- 			'Test::Pod'             => '0.72',
- 			'Test::Prereq'          => '0.18',
  			'Text::Diff'            => '0',
  			},
         'PM'             => {

@@ -1,4 +1,4 @@
-# $Id: Mozilla.pm,v 1.3 2002/12/03 03:15:49 comdog Exp $
+# $Id: Mozilla.pm,v 1.4 2004/01/04 08:44:46 comdog Exp $
 package HTTP::Cookies::Mozilla;
 use strict;
 
@@ -18,6 +18,9 @@ $cookie_jar = HTTP::Cookies::Mozilla->new;
 
 This package overrides the load() and save() methods of HTTP::Cookies
 so it can work with Mozilla cookie files.
+
+This module should be able to work with all Mozilla derived browsers
+(FireBird, Camino, et alia).
 
 See L<HTTP::Cookies>.
 
@@ -55,7 +58,7 @@ use Carp qw(carp);
 use constant TRUE  => 'TRUE';
 use constant FALSE => 'FALSE';
 
-$VERSION = sprintf "%2d.%02d", q$Revision: 1.3 $ =~ m/ (\d+) \. (\d+) /xg;
+$VERSION = sprintf "%2d.%02d", q$Revision: 1.4 $ =~ m/ (\d+) \. (\d+) /xg;
 
 my $EPOCH_OFFSET = $^O eq "MacOS" ? 21600 : 0;  # difference from Unix epoch
 
