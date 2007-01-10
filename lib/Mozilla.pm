@@ -1,4 +1,4 @@
-# $Id: Mozilla.pm,v 1.9 2006/05/27 07:40:59 comdog Exp $
+# $Id: Mozilla.pm,v 1.10 2007/01/10 04:09:20 comdog Exp $
 package HTTP::Cookies::Mozilla;
 use strict;
 
@@ -41,7 +41,7 @@ few material changes.
 
 maintained by brian d foy, C<< <bdfoy@cpan.org> >>
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
 Copyright 1997-1999 Gisle Aas
 
@@ -58,7 +58,7 @@ use Carp qw(carp);
 use constant TRUE  => 'TRUE';
 use constant FALSE => 'FALSE';
 
-$VERSION = sprintf "%2d.%02d", q$Revision: 1.9 $ =~ m/ (\d+) \. (\d+) /xg;
+$VERSION = sprintf "%2d.%02d", q$Revision: 1.10 $ =~ m/ (\d+) \. (\d+) /xg;
 
 my $EPOCH_OFFSET = $^O eq "MacOS" ? 21600 : 0;  # difference from Unix epoch
 

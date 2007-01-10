@@ -1,4 +1,8 @@
-# $Id: Changes,v 1.5 2006/05/27 07:47:07 comdog Exp $
+# $Id: Changes,v 1.6 2007/01/10 04:09:52 comdog Exp $
+
+1.10 - Tue Jan  9 22:10:09 2007
+	* updated copyright and license info
+	* no code changes, so no need to upgrade
 
 1.09 - Sat May 27 02:43:37 2006
 	* Cleanups to the distro. No need to upgrade.
