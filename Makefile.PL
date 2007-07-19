@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.6 2007/01/10 04:09:20 comdog Exp $
+# $Id: Makefile.PL 2294 2007-07-19 15:31:30Z comdog $
 use ExtUtils::MakeMaker;
 
 eval "use Test::Manifest 1.14";
@@ -8,6 +8,8 @@ WriteMakefile
 	'NAME'           => 'HTTP::Cookies::Mozilla',
 	'VERSION_FROM'   => 'lib/Mozilla.pm',
 	'LICENSE'        => 'perl',
+	'AUTHOR'		 => 'brian d foy <bdfoy@cpan.org>',
+	
 	'PREREQ_PM'      => {
 		'HTTP::Cookies'         => '1.25',
 		'Test::More'            => '0',
