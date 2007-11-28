@@ -1,4 +1,4 @@
-# $Id: Mozilla.pm 2375 2007-11-10 20:42:28Z comdog $
+# $Id: Mozilla.pm 2437 2007-11-28 15:05:44Z comdog $
 package HTTP::Cookies::Mozilla;
 use strict;
 
@@ -61,7 +61,7 @@ use Carp qw(carp);
 use constant TRUE  => 'TRUE';
 use constant FALSE => 'FALSE';
 
-$VERSION = 1.12;
+$VERSION = 1.13;
 
 my $EPOCH_OFFSET = $^O eq "MacOS" ? 21600 : 0;  # difference from Unix epoch
 

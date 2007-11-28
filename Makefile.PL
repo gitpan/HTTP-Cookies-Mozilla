@@ -1,5 +1,7 @@
-# $Id: Makefile.PL 2375 2007-11-10 20:42:28Z comdog $
+# $Id: Makefile.PL 2437 2007-11-28 15:05:44Z comdog $
 use ExtUtils::MakeMaker;
+
+require 5.006;
 
 eval "use Test::Manifest 1.14";
 	
@@ -13,7 +15,6 @@ WriteMakefile
 	
 	'PREREQ_PM'      => {
 		'HTTP::Cookies'         => '1.25',
-		'Test::More'            => '0',
 		'Text::Diff'            => '0',
 		},
 	'PM'             => {

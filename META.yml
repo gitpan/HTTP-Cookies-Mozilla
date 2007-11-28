@@ -1,13 +1,12 @@
 --- #YAML:1.0
 name:                HTTP-Cookies-Mozilla
-version:             1.12
+version:             1.13
 abstract:            Cookie storage and management for Mozilla
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.36
 distribution_type:   module
 requires:     
     HTTP::Cookies:                 1.25
-    Test::More:                    0
     Text::Diff:                    0
 meta-spec:
     url:     http://module-build.sourceforge.net/META-spec-v1.3.html
