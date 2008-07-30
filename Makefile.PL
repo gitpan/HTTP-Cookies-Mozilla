@@ -1,4 +1,4 @@
-# $Id: Makefile.PL 2437 2007-11-28 15:05:44Z comdog $
+# $Id$
 use ExtUtils::MakeMaker;
 
 require 5.006;

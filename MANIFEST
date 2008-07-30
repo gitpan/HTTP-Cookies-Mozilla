@@ -15,4 +15,5 @@ t/prereq.t
 t/save.ff3.t
 t/save.t
 t/test_manifest
+t/TestSqliteCmd.pm
 META.yml                                 Module meta-data (added by MakeMaker)
