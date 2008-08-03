@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                HTTP-Cookies-Mozilla
-version:             2.00_02
+version:             2.00_03
 abstract:            Cookie storage and management for Mozilla
 license:             perl
 author:              

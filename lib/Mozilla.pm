@@ -42,6 +42,12 @@ program to be used, e.g.:
    use HTTP::Cookies::Mozilla;
    $HTTP::Cookies::Mozilla::SQLITE = '/path/to/sqlite3';
 
+Usage of the external program is supported under perl 5.8 onwards only,
+because previous perl versions do not support L<perlfunc/open> with
+more than three arguments, which are safer. If you are still sticking
+to perl 5.6, you'll have to install L<DBI>/L<DBD::SQLite> to make
+FireFox 3 cookies work.
+
 See L<HTTP::Cookies>.
 
 =head1 SOURCE AVAILABILITY
@@ -78,7 +84,7 @@ use Carp qw(carp);
 use constant TRUE  => 'TRUE';
 use constant FALSE => 'FALSE';
 
-$VERSION = '2.00_02';
+$VERSION = '2.00_03';
 $SQLITE = 'sqlite3';
 
 my $EPOCH_OFFSET = $^O eq "MacOS" ? 21600 : 0;  # difference from Unix epoch
@@ -96,6 +102,7 @@ sub _load_ff3 {
       $dbh->disconnect();
       1;
    } or eval {
+      require 5.008_000; # for >3 arguments open, which is safer
       open my $fh, '-|', $SQLITE, $file, $query or die $!;
       $cookies = [ map { [ split /\|/ ] } <$fh> ];
       1;
